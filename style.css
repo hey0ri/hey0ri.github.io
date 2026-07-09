@@ -1,0 +1,223 @@
+:root {
+  --bg: #100a1f;
+  --bg-alt: #180f2e;
+  --fg: #f5f1ff;
+  --muted: #a79bd1;
+  --pink: #ff3cac;
+  --yellow: #ffd23f;
+  --cyan: #4ce0d2;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* --- fond étoilé léger --- */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, var(--muted), transparent),
+    radial-gradient(2px 2px at 300px 120px, var(--cyan), transparent),
+    radial-gradient(1px 1px at 500px 60px, var(--pink), transparent),
+    radial-gradient(2px 2px at 700px 200px, var(--muted), transparent),
+    radial-gradient(1px 1px at 900px 90px, var(--yellow), transparent),
+    radial-gradient(2px 2px at 150px 400px, var(--cyan), transparent),
+    radial-gradient(1px 1px at 850px 500px, var(--muted), transparent);
+  background-repeat: repeat;
+  background-size: 1000px 600px;
+  opacity: 0.5;
+}
+
+/* --- hero --- */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem 3rem;
+}
+
+.eyebrow {
+  color: var(--cyan);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.glitch-title {
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  font-weight: 700;
+  margin: 0;
+  color: var(--fg);
+  position: relative;
+  text-shadow:
+    3px 3px 0 var(--pink),
+    -3px -3px 0 var(--cyan);
+}
+
+.scribble {
+  width: 200px;
+  height: 14px;
+  margin: 0.25rem 0 1rem;
+}
+.scribble path {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.tagline {
+  color: var(--muted);
+  font-size: 1.1rem;
+  max-width: 32rem;
+  margin: 0;
+}
+
+/* --- sections génériques --- */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  margin: 5rem 0;
+}
+
+section h2 {
+  font-size: 1.6rem;
+  color: var(--yellow);
+  margin-bottom: 1.2rem;
+}
+
+.about p {
+  color: var(--fg);
+  max-width: 40rem;
+}
+
+.section-note {
+  margin: 0 0 1rem;
+}
+
+/* --- projets : cartes stickers --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.project-card {
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.project-card:hover {
+  transform: rotate(0deg) scale(1.03) translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.tilt-1 { transform: rotate(-2.5deg); }
+.tilt-2 { transform: rotate(1.8deg); }
+.tilt-3 { transform: rotate(-1.2deg); }
+.tilt-4 { transform: rotate(2.4deg); }
+
+.project-card h3 {
+  margin: 0.4rem 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}
+
+.project-card a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.project-card a:hover { text-decoration: underline; }
+
+.tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: var(--pink);
+}
+
+.project-card[data-tag="ecriture"] .tag { color: var(--yellow); }
+.project-card[data-tag="univers"] .tag { color: var(--cyan); }
+
+/* --- contact --- */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+
+.contact-links a {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 1.05rem;
+  border-bottom: 2px solid var(--pink);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-links a:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 2rem 1rem 3rem;
+}
+
+/* --- accessibilité : focus visible & réduction de mouvement --- */
+a:focus-visible, .project-card:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .project-card { transition: none; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding-top: 4rem; }
+}
